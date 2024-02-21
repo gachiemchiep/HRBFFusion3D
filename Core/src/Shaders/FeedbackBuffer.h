@@ -26,7 +26,7 @@
 #include "../Utils/Intrinsics.h"
 #include "../Utils/GlobalStateParams.h"
 #include <pangolin/gl/gl.h>
-#include <pangolin/display/opengl_render_state.h>
+#include <pangolin/gl/opengl_render_state.h>
 
 #include<Eigen/Core>
 

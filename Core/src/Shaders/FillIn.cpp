@@ -334,7 +334,7 @@ void FillIn::downloadtexture(const Eigen::Matrix4f& lastPose,int lastFrames, boo
      }
 
      std::vector<int> compression_params;
-     compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+     compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
      compression_params.push_back(0);
      cv::imwrite("fillin_colorMap.png", imageCV, compression_params);
      std::cout << "fillin_colorMap saved successfully" << std::endl;

@@ -7,6 +7,10 @@
 #endif
 #include "lineslam.h"
 
+#include "opencv2/core/core_c.h"
+#include "opencv2/videoio/legacy/constants_c.h"
+#include "opencv2/highgui/highgui_c.h"
+
 namespace Line3D {
 
 ntuple_list callLsd (IplImage* src);

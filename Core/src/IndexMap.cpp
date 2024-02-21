@@ -624,7 +624,7 @@ void IndexMap::downloadTexture(const Eigen::Matrix4f& pose, int frameID){
         }
     }
     std::vector<int> compression_params;
-    compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+    compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
     compression_params.push_back(0);
     cv::imwrite("indexHRBF_colorMap.png", imageCV, compression_params);
     std::cout << "indexHRBF_colorMap saved successfully" << std::endl;
@@ -652,7 +652,7 @@ void IndexMap::downloadTexture(const Eigen::Matrix4f& pose, int frameID){
         }
     }
 //    std::vector<int> compression_params;
-//    compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+//    compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
 //    compression_params.push_back(0);
     cv::imwrite("HRBF_normal.png", normalImagCV, compression_params);
     std::cout << "normal texture saved successfully" << std::endl;

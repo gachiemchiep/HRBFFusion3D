@@ -1659,7 +1659,7 @@ void HRBFFusion::downloadTextures()
         }
     }
     std::vector<int> compression_params;
-    compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+    compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
     compression_params.push_back(0);
     cv::imwrite("live_colorMap.png", imageCV, compression_params);
     std::cout << "image saved successfully" << std::endl;
@@ -1689,7 +1689,7 @@ void HRBFFusion::downloadTextures()
         }
     }
 //    std::vector<int> compression_params;
-//    compression_params.push_back(CV_IMWRITE_PNG_COMPRESSION);
+//    compression_params.push_back(cv::IMWRITE_PNG_COMPRESSION);
 //    compression_params.push_back(0);
     cv::imwrite("live_NormalMap.png", normalImagCV, compression_params);
     std::cout << "live_NormalMap saved successfully" << std::endl;

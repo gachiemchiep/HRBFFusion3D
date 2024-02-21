@@ -8,7 +8,7 @@
 
 find_path(HRBFFUSION_INCLUDE_DIR HRBFFusion.h
           PATHS
-            /home/yabinxu/workspace/hrbf_fusion/Core/src
+          /datadrive/workspace/JIL/2023.new_product/experiments/3d_reconstruction/HRBFFusion3D/Core/src/ 
             ${CMAKE_CURRENT_SOURCE_DIR}/../src
           PATH_SUFFIXES src
 )

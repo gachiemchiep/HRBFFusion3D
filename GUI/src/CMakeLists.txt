@@ -14,16 +14,14 @@ if(WIN32)
   endmacro()
 endif()
 
-if(WIN32)
-  find_package(JPEG REQUIRED)
-endif()
+find_package(JPEG REQUIRED)
 find_package(LAPACK REQUIRED)
 find_package(BLAS REQUIRED)
 find_package(ZLIB REQUIRED)
 find_package(Pangolin 0.5 REQUIRED)
 find_package(CUDA REQUIRED)
 find_package(ORBSLAM2 REQUIRED)
-# find_package(OpenNI2 REQUIRED)
+find_package(OpenNI2 REQUIRED)
 find_package(hrbffusion REQUIRED)
 find_package(SuiteSparse REQUIRED)
 find_package(OpenMP)
@@ -44,10 +42,7 @@ if(WIN32)
   option(WITH_REALSENSE "Build with Intel RealSense support?" ${REALSENSE_FOUND})
 endif()
 
-if(WIN32)
-  include_directories(${JPEG_INCLUDE_DIR})
-endif()
-
+include_directories(${JPEG_INCLUDE_DIR})
 include_directories(${ZLIB_INCLUDE_DIR})
 include_directories(${EIGEN_INCLUDE_DIRS})
 include_directories(${Pangolin_INCLUDE_DIRS})
@@ -56,17 +51,17 @@ include_directories(${HRBFFUSION_INCLUDE_DIR})
 include_directories(${ORBSLAM2_INCLUDE_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/../../Core/src/ORB_SLAM2_m)
 include_directories(${CMAKE_SOURCE_DIR}/../../Core/src/ORB_SLAM2_m/include)
-set(OPENNI2_INCLUDE_DIR /home/yabinxu/workspace/ElasticFusion/third-party/OpenNI2/Include)
-set(OPENNI2_LIBRARY /home/yabinxu/workspace/ElasticFusion/third-party/OpenNI2/Bin/x64-Release/libOpenNI2.so)
+# set(OPENNI2_INCLUDE_DIR /home/yabinxu/workspace/ElasticFusion/third-party/OpenNI2/Include)
+# set(OPENNI2_LIBRARY /home/yabinxu/workspace/ElasticFusion/third-party/OpenNI2/Bin/x64-Release/libOpenNI2.so)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -luuid")
 include_directories(${OPENNI2_INCLUDE_DIR})
 #include_directories(${PCL_INCLUDE_DIRS})
 #link_directories(${PCL_LIBRARY_DIRS})
 #add_definitions(${PCL_DEFINITIONS})
 
-set(ransacDir /home/yabinxu/workspace/hrbf_fusion/Core/src/ransac/RANSAC-1.1)
+set(ransacDir /datadrive/workspace/JIL/2023.new_product/experiments/3d_reconstruction/HRBFFusion3D/Core/src/ransac/RANSAC-1.1/)
 include_directories(${ransacDir})
-set(ransaclib /home/yabinxu/workspace/hrbf_fusion/Core/src/ransac/build/lib3rd_ransac.a)
+set(ransaclib /datadrive/workspace/JIL/2023.new_product/experiments/3d_reconstruction/HRBFFusion3D/Core/src/ransac/build/lib3rd_ransac.a)
 
 #add_compile_options(-D WITH_REALSENSE)
 if(WITH_REALSENSE)
@@ -95,8 +90,8 @@ else()
   add_definitions(-Dlinux=1)
 endif()
 
-set(CMAKE_CXX_FLAGS ${ADDITIONAL_CMAKE_CXX_FLAGS} "-O2 -msse2 -msse3 -Wall -std=c++11 -fopenmp")
-#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS ${ADDITIONAL_CMAKE_CXX_FLAGS} "-O2 -msse2 -msse3 -Wall -std=c++14 -fopenmp")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -std=c++14")
 
 #for HRBF fusion
 add_executable(HRBFfusion
@@ -119,6 +114,7 @@ target_link_libraries(HRBFfusion
         ${BLAS_LIBRARIES}
         ${LAPACK_LIBRARIES}
         ${OpenCV_LIBS}
+        ${JPEG_LIBRARIES}
 #        ${PCL_LIBRARIES}
         ${ransaclib}
         ${Open3D_LIBRARIES}
